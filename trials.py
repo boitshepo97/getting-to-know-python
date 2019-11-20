@@ -12,7 +12,9 @@ def list_all_js_function_names(pfile):
     with open(pfile) as dataFile:
         data = dataFile.readlines()
 
+        j = 0
         lineNumber = 0
+        end_row = 0
         dictFunctions = []
 
         # searched = re.search("function", data)
@@ -28,14 +30,32 @@ def list_all_js_function_names(pfile):
                 
                 for function in functions:
                     if function.find('function') == -1:
-                        # str = re.sub('[^A-Za-z0-9]+', '', function)
+
+                        j += 1
+                        end_row = all_lines(pfile, line)[j]
+                        
                         str = function.split('(', 1)
-                        dictFunctions.append({'name':str[0], 'start_row':lineNumber, 'end_row':lineNumber})
+                        dictFunctions.append({'name':str[0], 'start_row':lineNumber, 'end_row':end_row})
 
     print(dictFunctions)       
                         
                 
+def all_lines(pfile, str):
+    lines = []
 
+    with open(pfile) as dataFile:
+        data = dataFile.readlines()
+
+        start_row = 0
+
+        for line in data:
+            start_row += 1
+
+            if 'function' in line:
+                lines.append(start_row -2)
+
+    lines.append(start_row)
+    return lines
 
 # file = "/path/to/script.js"
 
