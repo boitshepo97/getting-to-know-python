@@ -1,6 +1,8 @@
 import re
 
-
+# need to read line
+# account for rows (start and end)
+# make a dictionary to contain results
 
 # re.search("/path/to/script.js")
 

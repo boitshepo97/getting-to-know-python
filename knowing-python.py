@@ -1,26 +1,21 @@
 import re
 
-
-
-# re.search("/path/to/script.js")
-
+# This is the given function we are recquired to fix.
 def list_all_js_function_names(pfile):
     """
     path_to_js_file is a path to a file on your hard drive
     This function will read the entire input file and then return a list of js function names as strings
     """
+# Opening file to read.
     with open(pfile) as dataFile:
         data = dataFile.readlines()
 
+# Code for reading the start and end rows for functions.
         j = 0
         lineNumber = 0
         end_row = 0
         dictFunctions = []
 
-        # searched = re.search("function", data)
-
-        # print(searched[0])
-        
         for line in data:
             lineNumber += 1
 
@@ -39,7 +34,7 @@ def list_all_js_function_names(pfile):
 
     print(dictFunctions)       
                         
-                
+# Had to create a fumction to read the end row.              
 def all_lines(pfile, str):
     lines = []
 
@@ -56,8 +51,5 @@ def all_lines(pfile, str):
 
     lines.append(start_row)
     return lines
-
-# file = "/path/to/script.js"
-
 
 list_all_js_function_names("script.js")
