@@ -32,7 +32,7 @@ def list_all_js_function_names(pfile):
                         str = function.split('(', 1)
                         dictFunctions.append({'name':str[0], 'start_row':lineNumber, 'end_row':end_row})
 
-    print(dictFunctions)       
+    return dictFunctions       
                         
 # Had to create a fumction to read the end row.              
 def all_lines(pfile, str):
@@ -52,4 +52,4 @@ def all_lines(pfile, str):
     lines.append(start_row)
     return lines
 
-list_all_js_function_names("script.js")
+print(list_all_js_function_names("script.js"))
